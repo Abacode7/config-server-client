@@ -28,6 +28,9 @@ class Controller {
 	// @Value("${perf.line1}")
 	// private String perfLine;
 
+	@Value("${connection.key}")
+	private String connectionKey;
+
 	@GetMapping("/rate/vehicle1")
 	public String rateVehicleOne(){
 		return vehicle1Rate;
@@ -36,6 +39,11 @@ class Controller {
 	@GetMapping("/rate/unit")
 	public String rateUnit(){
 		return rateUnit;
+	}
+
+	@GetMapping("/connection/key")
+	public String connectionKey(){
+		return connectionKey;
 	}
 
 	// @GetMapping("/perf/line")
