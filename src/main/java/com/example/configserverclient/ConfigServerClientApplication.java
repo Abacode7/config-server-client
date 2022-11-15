@@ -1,0 +1,45 @@
+package com.example.configserverclient;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+public class ConfigServerClientApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ConfigServerClientApplication.class, args);
+	}
+
+}
+
+
+@RestController
+class Controller {
+
+	@Value("${rate.vehicle1}")
+	private String vehicle1Rate;
+
+	@Value("${rate.unit}")
+	private String rateUnit;
+
+	// @Value("${perf.line1}")
+	// private String perfLine;
+
+	@GetMapping("/rate/vehicle1")
+	public String rateVehicleOne(){
+		return vehicle1Rate;
+	}
+	
+	@GetMapping("/rate/unit")
+	public String rateUnit(){
+		return rateUnit;
+	}
+
+	// @GetMapping("/perf/line")
+	// public String perfLine(){
+	// 	return perfLine;
+	// }
+}
